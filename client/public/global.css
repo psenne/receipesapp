@@ -1,0 +1,46 @@
+
+* {
+    box-sizing: border-box;
+}
+html,
+body {
+    position: relative;
+}
+
+body {
+    color: #333;
+    background-color: #141414;
+    font-family: 'segoe ui semilight', 'verdana', 'arial', 'sans-serif';
+}
+
+a {
+    color: rgb(0, 100, 200);
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+a:visited {
+    color: rgb(0, 80, 160);
+}
+
+label {
+    display: inline-block;
+}
+
+input,
+button,
+select,
+textarea {
+    padding: 0.4em;
+    margin: 0 0 0 0;
+    border: 1px solid rgba(0,0,0,50%);
+    border-radius: 2px;
+}
+button .fa-icon{
+    vertical-align: bottom;
+}
+.fa-icon{
+    vertical-align: text-top;
+}
+

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Sample FirebaseUI App</title>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: 'AIzaSyBuUDy1EgQwIBzbWNCXApx5yjLcK4Zi3fs',
+                authDomain: 'python-fb-afc99.firebaseapp.com',
+                databaseURL: 'https://python-fb-afc99.firebaseio.com',
+                projectId: 'python-fb-afc99',
+                storageBucket: 'python-fb-afc99.appspot.com',
+                messagingSenderId: '984009175756',
+                appId: '1:984009175756:web:d0113ec251c280874e8869'
+            }
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig)
+        </script>
+        <script type="text/javascript">
+            initApp = function () {
+                firebase.auth().onAuthStateChanged(
+                    function (user) {
+                        if (user) {
+                            user.getIdToken().then(function (accessToken) {
+                                fetch('/api/checklogin', {
+                                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                                    },
+                                    body: JSON.stringify({ accessToken }) // body data type must match "Content-Type" header
+                                })
+                            })
+                        } else {
+                            //user not logged in
+                        }
+                    },
+                    function (error) {
+                        console.log(error)
+                    }
+                )
+            }
+
+            window.addEventListener('load', function () {
+                initApp()
+            })
+        </script>
+        <script>
+            var uiConfig = {
+                signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID]
+            }
+
+            var ui = new firebaseui.auth.AuthUI(firebase.auth())
+            ui.start('#firebaseui-auth-container', uiConfig)
+        </script>
+    </head>
+
+    <body>
+        <h1>Login required</h1>
+        <div id="firebaseui-auth-container"></div>
+    </body>
+</html>

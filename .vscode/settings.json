@@ -1,0 +1,8 @@
+{
+    "python.pythonPath": "C:\\Users\\windo\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintArgs": ["--load-plugins", "pylint-flask", "pylint-flask-sqlalchemy"],
+    "python.linting.banditEnabled": false,
+    "python.formatting.autopep8Args": ["--max-line-length", "250", "--experimental"]
+}

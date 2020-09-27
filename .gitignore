@@ -1,0 +1,5 @@
+npm_modules/*
+fbsecret.json
+**/README*
+**/__pycache__
+**/build/*
