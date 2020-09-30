@@ -51,11 +51,8 @@
 <Layout>
     <Router {routes} />
 </Layout>
-<MessageBox {messageBox} hidden={!messageBox.showMessageBox} on:closeMessageBox={CloseMessage} />
 {#if showModal}
-    {@debug showModal}
     <Modal>
-        <h1 slot="header">{header}</h1>
         <svelte:component this={component} />
     </Modal>
 {/if}

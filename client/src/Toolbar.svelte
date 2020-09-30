@@ -1,16 +1,17 @@
 <script>
     import { setModal } from './stores.js'
     import RecipeAdd from './RecipeAdd.svelte'
-    import {fade} from 'svelte/transition'
+    import SearchBox from './SearchBox.svelte'
 
-    let searchterm = ''
     let hidden = true
 
     function ShowSearchOverlay(ev) {
+        setModal.set({ showModal: true, component: SearchBox, header: 'Search recipes' })
         hidden = false
     }
 
     function HideSearchOverlay(ev) {
+        setModal.set({ showModal: false, component: SearchBox, header: 'Search recipes' })
         hidden = true
     }
 </script>
@@ -45,11 +46,6 @@
     .toolbar-right {
         margin-right: 1rem;
     }
-    .search-bar {
-        width: 50vw;
-        height: 2.5rem;
-        border-radius: 5px;    
-    }
     .btn-submit-search {
         margin-left: -24px;
     }
@@ -64,9 +60,6 @@
         background: hsl(0 0% 0% / 75%);
         z-index: 1000;
     }
-    .hidden {
-        display: none;
-    }
 </style>
 
 <nav class="nav">
@@ -80,12 +73,11 @@
                 ➕
             </button>
             <a href="#" class="button">Categories</a>
+            <a class="button" href="#" on:click|preventDefault={ShowSearchOverlay}>🔎</a>
+            <div class="toolbar-right" />
         </span>
     </div>
-    <div class="toolbar-right"><a class="btn-submit-search" href="#" on:click|preventDefault={ShowSearchOverlay}>🔎</a></div>
 </nav>
-{#if !hidden}
-    <div class="search-overlay" transition:fade="{{ duration: 500 }}" on:click|preventDefault|self={HideSearchOverlay}>
-        <input name="search" type="text" class="search-bar" placeholder="Search recipes..." bind:value={searchterm} />
-    </div>
-{/if}
+<!-- {#if !hidden}
+    <div class="search-overlay" transition:fade on:click|preventDefault|self={HideSearchOverlay} />
+{/if} -->

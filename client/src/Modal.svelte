@@ -49,10 +49,17 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.3);
+        background: rgba(0, 0, 0, 0.75);
+        display: grid;
+        place-content: center;
     }
 
-    .modal {
+    .header{
+        color: white;
+        font-size: 1.2rem;;
+    }
+
+    .modalx {
         position: absolute;
         left: 50%;
         top: 50%;
@@ -76,15 +83,8 @@
 
 <svelte:window on:keydown={handle_keydown} />
 
-<div class="modal-background" on:click={close} />
-
-<div class="modal" role="dialog" aria-modal="true" bind:this={modal} transition:fade>
-    <a class="btn-close" autofocus on:click={close}>✖</a>
-    <slot name="header" />
-    <hr />
-    <slot />
-    <hr />
-
-    <!-- svelte-ignore a11y-autofocus -->
-    <slot name="footer" />
+<div class="modal-background" on:click|self|preventDefault={close}>
+    <div class="modal" role="dialog" aria-modal="true" bind:this={modal} transition:fade>
+        <slot />
+    </div>
 </div>

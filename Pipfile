@@ -16,6 +16,7 @@ flask-cors = "*"
 marshmallow = "*"
 flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
+flask-httpauth = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.8.2"

@@ -17,5 +17,6 @@
         }
     }
 </script>
-
-<input type="file" bind:files {name} accept="image/*" on:change={ImageToString} />
+<div>
+    <input type="file" bind:files {name} accept="image/*" on:change={ImageToString} />
+</div>
